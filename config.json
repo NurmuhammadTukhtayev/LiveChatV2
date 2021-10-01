@@ -1,0 +1,12 @@
+{
+  "db": {
+    "host": "localhost",
+    "username": "root",
+    "password": "f&1123581321",
+    "database": "Chat"
+  },
+  "app": {
+    "PORT":"3001",
+    "key": "s3kr5tKt7"
+  }
+}
