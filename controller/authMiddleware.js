@@ -24,13 +24,13 @@ exports.getRole=(roles)=>{
             const token=req.headers.authorization
             console.log(token)
             if(!token)
-                return res.status(400).json({message:"First log in"})
+                return res.redirect('/')
             const decoded=jwt.verify(token, key)
             console.log(decoded.roles)
             if(roles===decoded.roles)
                 next()
             else
-                return res.status(400).json("You have not access")
+                return res.redirect('/')
         }catch (err){
             console.log(err)
         }
