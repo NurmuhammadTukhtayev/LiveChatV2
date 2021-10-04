@@ -6,31 +6,29 @@ exports.auth=(req, res, next)=>{
         next()
 
     try {
-        const token=req.headers.authorization
-        console.log(token)
+        const token=req.header('authorization')
         if(!token)
-            return res.status(400).json({message:"First log in"})
+            return res.redirect('/auth/register')
         const decoded=jwt.verify(token, key)
         console.log(decoded)
         next()
     }catch (err){
-        console.log("First log in")
+        console.log(err)
     }
 }
 
 exports.getRole=(roles)=>{
     return function (req, res, next){
         try {
-            const token=req.headers.authorization
+            const token=req.header.authorization
             console.log(token)
             if(!token)
                 return res.redirect('/')
             const decoded=jwt.verify(token, key)
-            console.log(decoded.roles)
             if(roles===decoded.roles)
                 next()
             else
-                return res.redirect('/')
+                return res.redirect('/login')
         }catch (err){
             console.log(err)
         }

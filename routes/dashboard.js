@@ -3,7 +3,7 @@ const {auth, getRole}=require('../controller/authMiddleware')
 const router=express.Router()
 
 //dashboard page
-router.get('/', (req, res)=>{
+router.get('/', auth,(req, res)=>{
     res.render('index.ejs', {
         pageTitle:'dashboard'
     })

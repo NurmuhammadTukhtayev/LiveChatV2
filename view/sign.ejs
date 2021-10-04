@@ -1,0 +1,19 @@
+<%- include('exports/head.ejs')%>
+<body>
+<%- include('exports/nav.ejs')%>
+<div class="page">
+    <div class="sign-up">
+        <form action="/auth/register" method="post">
+            <label>Username:</label>
+            <input placeholder="name" name="username">
+            <label>Email</label>
+            <input type="email" placeholder="example@gmail.com" name="email">
+            <label>Password</label>
+            <input type="password" placeholder="secret" name="password"/>
+            <button type="submit" class="btn">Register</button>
+        </form>
+        <p>Already have account? <a href="/auth/login">Login</a></p>
+    </div>
+</div>
+</body>
+</html>
