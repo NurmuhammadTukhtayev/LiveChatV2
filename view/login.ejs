@@ -1,0 +1,16 @@
+<%- include('exports/head.ejs')%>
+<body>
+<%- include('exports/nav.ejs')%>
+<div class="page">
+    <div class="sign-up">
+        <form action="/auth/login" method="post">
+            <label>Username or email:</label>
+            <input placeholder="name" name="login">
+            <label>Password</label>
+            <input type="password" placeholder="secret" name="password"/>
+            <button type="submit" class="btn">Log in</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

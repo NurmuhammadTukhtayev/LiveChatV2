@@ -1,16 +1,11 @@
-const jwt=require('jsonwebtoken')
-const {key}=require('../config.json').app
-
 exports.auth=(req, res, next)=>{
     if(req.method==="OPTIONS")
         next()
 
     try {
-        const token=req.header('authorization')
-        if(!token)
+        const isLogIn=req.session.uid
+        if(!isLogIn)
             return res.redirect('/auth/register')
-        const decoded=jwt.verify(token, key)
-        console.log(decoded)
         next()
     }catch (err){
         console.log(err)
@@ -24,9 +19,6 @@ exports.getRole=(roles)=>{
             console.log(token)
             if(!token)
                 return res.redirect('/')
-            const decoded=jwt.verify(token, key)
-            if(roles===decoded.roles)
-                next()
             else
                 return res.redirect('/login')
         }catch (err){
